@@ -13,9 +13,15 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        EasyDialog easyDialog = new EasyDialog();
-        easyDialog.setStyle(0);
-        easyDialog.show(getSupportFragmentManager(), "");
+        //弹框 菊花加载
+//        EasyDialog.builder().setStyle(2).show(getSupportFragmentManager(), "");
+
+
+//        EasyDialog easyDialog = new EasyDialog();
+//        easyDialog.setStyle(0);
+//        easyDialog.show(getSupportFragmentManager(), "");
+
+
 //        EasyDialog.builder()
 //                .setDialogTitleText("标题")
 //                .setDialogContent("我是内容", Gravity.LEFT)

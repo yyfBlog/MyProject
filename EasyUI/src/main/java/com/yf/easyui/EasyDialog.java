@@ -1,13 +1,15 @@
 package com.yf.easyui;
 
-import android.app.Dialog;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +17,12 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.yf.easyui.base.DialogInterface;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by yyf on 2017/8/12.
@@ -35,6 +39,7 @@ public class EasyDialog extends DialogFragment {
     public static final int WHICK_CANCLE = 0; //取消按钮
     private int style = 1;
     private String tip;
+    private static final String TAG = "EasyDialog";
 
     public static EasyDialog builder() {
         if (instance == null) {
@@ -55,8 +60,10 @@ public class EasyDialog extends DialogFragment {
         View view = null;
         if (style == 0) {
             view = inflater.inflate(R.layout.dialog_loading, container, false);
-        } else {
+        } else if (style == 1) {
             view = inflater.inflate(R.layout.dialog_easy, container, false);
+        } else if (style == 2) {
+            view = inflater.inflate(R.layout.dialog_img, container, false);
         }
         initView(view, style);
         return view;
@@ -67,19 +74,23 @@ public class EasyDialog extends DialogFragment {
         super.onViewCreated(view, savedInstanceState);
         if (style == 0) {
             initLoadingText();
-        } else {
+        } else if (style == 1) {
             initViewText();
+        } else if (style == 2) {
+
         }
     }
 
     private void initView(View view, int style) {
         if (style == 0) {
             tv_tip = (TextView) view.findViewById(R.id.tv_tip);
-        } else {
+        } else if (style == 1) {
             btn_cancel = (Button) view.findViewById(R.id.btn_cancel);
             btn_ok = (Button) view.findViewById(R.id.btn_ok);
             tv_dialog_title = (TextView) view.findViewById(R.id.tv_dialog_title);
             tv_content = (TextView) view.findViewById(R.id.tv_content);
+        } else if (style == 2) {
+
         }
     }
 
@@ -88,6 +99,7 @@ public class EasyDialog extends DialogFragment {
             tv_tip.setText(tip);
         }
     }
+
 
     private void initViewText() {
         if (!TextUtils.isEmpty(cancelButtonText)) {

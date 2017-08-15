@@ -32,4 +32,10 @@ easyDialog.show(getSupportFragmentManager(), "");
                 .show(getSupportFragmentManager(), "");	
 </code>
 </pre>
-![image](https://github.com/yyfBlog/MyProject/blob/master/dialog_style_03.png)
+![image](https://github.com/yyfBlog/MyProject/blob/master/dialog_style_03.png)  
+
+# ListView 无数据 无网络时的提示 可以自由给定图片，文字提示
+EmptyView emptyView = new EmptyView(this, lv_data);  
+emptyView.showEmptyView(R.drawable.ic_empty,"没有数据...");
+![image](https://github.com/yyfBlog/MyProject/blob/master/empty)  
+ 

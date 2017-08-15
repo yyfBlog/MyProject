@@ -1,25 +1,36 @@
 package com.yf.menu;
 
-import android.support.v4.app.DialogFragment;
-import android.view.Gravity;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ListView;
 
 import com.yf.easyui.EasyDialog;
-import com.yf.easyui.base.DialogInterface;
+import com.yf.easyui.widgets.EmptyView;
 import com.yf.menu.base.BaseActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends BaseActivity {
+    private ListView lv_data;
+    private MyAdapter mAdapter;
+    private EmptyView emptyView;
+    private List<Integer> data = new ArrayList<Integer>();
 
     @Override
     protected int layoutId() {
         return R.layout.activity_main;
     }
 
-
     @Override
     protected void initView() {
-        //弹框 菊花加载
-        EasyDialog.builder().setStyle(2).show(getSupportFragmentManager(), "");
-
+        lv_data = (ListView) findViewById(R.id.lv_data);
+        emptyView = new EmptyView(this, lv_data);
+        mAdapter = new MyAdapter(data, this);
+        lv_data.setAdapter(mAdapter);
+        emptyView.showEmptyView(R.drawable.ic_empty,"没有数据...");
+//        弹框 菊花加载
+//        EasyDialog.builder().setStyle(2).show(getSupportFragmentManager(), "");
 
 //        EasyDialog easyDialog = new EasyDialog();
 //        easyDialog.setStyle(0);

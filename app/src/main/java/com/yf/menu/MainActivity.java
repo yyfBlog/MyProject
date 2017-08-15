@@ -14,7 +14,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView() {
         //弹框 菊花加载
-//        EasyDialog.builder().setStyle(2).show(getSupportFragmentManager(), "");
+        EasyDialog.builder().setStyle(2).show(getSupportFragmentManager(), "");
 
 
 //        EasyDialog easyDialog = new EasyDialog();

@@ -1,6 +1,10 @@
 package com.yf.menu;
 
+import android.support.v4.app.DialogFragment;
+import android.view.Gravity;
+
 import com.yf.easyui.EasyDialog;
+import com.yf.easyui.base.DialogInterface;
 import com.yf.menu.base.BaseActivity;
 
 public class MainActivity extends BaseActivity {

@@ -10,7 +10,7 @@ easyDialog.show(getSupportFragmentManager(), "");
 EasyDialog easyDialog = new EasyDialog();  
 easyDialog.setStyle(2);  
 easyDialog.show(getSupportFragmentManager(), "");  
-![image](https://github.com/yyfBlog/MyProject/blob/master/dialog_style_01.png)
+![image](https://github.com/yyfBlog/MyProject/blob/master/dialog_style_02.png)
 
 <pre>
 <code>

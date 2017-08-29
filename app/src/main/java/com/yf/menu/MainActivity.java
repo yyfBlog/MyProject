@@ -1,21 +1,16 @@
 package com.yf.menu;
 
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ListView;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.Button;
 
-import com.yf.easyui.EasyDialog;
-import com.yf.easyui.widgets.EmptyView;
+import com.yf.easyui.widgets.EasyPopupWindow;
 import com.yf.menu.base.BaseActivity;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends BaseActivity {
-    private ListView lv_data;
-    private MyAdapter mAdapter;
-    private EmptyView emptyView;
-    private List<Integer> data = new ArrayList<Integer>();
+    private Button btn_bottom, btn_top, btn_left, btn_right;
+    private View contentView;
 
     @Override
     protected int layoutId() {
@@ -24,34 +19,38 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        lv_data = (ListView) findViewById(R.id.lv_data);
-        emptyView = new EmptyView(this, lv_data);
-        mAdapter = new MyAdapter(data, this);
-        lv_data.setAdapter(mAdapter);
-        emptyView.showEmptyView(R.drawable.ic_empty,"没有数据...");
-//        弹框 菊花加载
-//        EasyDialog.builder().setStyle(2).show(getSupportFragmentManager(), "");
+        btn_bottom = (Button) findViewById(R.id.btn_bottom);
+        btn_top = (Button) findViewById(R.id.btn_top);
+        btn_left = (Button) findViewById(R.id.btn_left);
+        btn_right = (Button) findViewById(R.id.btn_right);
+        contentView = View.inflate(MainActivity.this, R.layout.layout_pop, null);
 
-//        EasyDialog easyDialog = new EasyDialog();
-//        easyDialog.setStyle(0);
-//        easyDialog.show(getSupportFragmentManager(), "");
+        btn_bottom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EasyPopupWindow.getInstance(MainActivity.this).setContentView(contentView).build().show(view);
+            }
+        });
 
+        btn_top.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EasyPopupWindow.getInstance(MainActivity.this).setContentView(contentView).build().showAtLocation(btn_top, Gravity.TOP, 0, (int) btn_top.getY() - btn_top.getHeight() / 2);
+            }
+        });
 
-//        EasyDialog.builder()
-//                .setDialogTitleText("标题")
-//                .setDialogContent("我是内容", Gravity.LEFT)
-//                .setCancelButtonText("取消")
-//                .setOkButtonText("确定")
-//                .setOnclickListener(new DialogInterface() {
-//                    @Override
-//                    public void onClick(DialogFragment dialog, int which) {
-//                        if (which == 0) { //取消
-//                            dialog.dismiss();
-//                        } else if (which == 1) {//确定
-//
-//                        }
-//                    }
-//                })
-//                .show(getSupportFragmentManager(), "");
+        btn_left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EasyPopupWindow.getInstance(MainActivity.this).setContentView(contentView).build().showAtLocation(btn_left, Gravity.LEFT, 0, btn_left.getHeight() / 4);
+            }
+        });
+
+        btn_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EasyPopupWindow.getInstance(MainActivity.this).setContentView(contentView).build().showAtLocation(btn_right, Gravity.RIGHT, 0, btn_right.getHeight() / 4);
+            }
+        });
     }
 }

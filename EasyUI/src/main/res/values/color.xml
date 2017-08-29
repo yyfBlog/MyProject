@@ -3,4 +3,5 @@
     <color name="btn_no_pre">#ccc</color>
     <color name="btn_pre">#999</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="black">#000000</color>
 </resources>

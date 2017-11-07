@@ -74,8 +74,8 @@ btn_bottom.setOnClickListener(new View.OnClickListener() {
 #尺子UI
 ![image](https://github.com/yyfBlog/MyProject/blob/master/png/ruler.png)
 <pre><code>
-    <com.yf.easyui.widgets.RulerView
+    《com.yf.easyui.widgets.RulerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />   
+        android:layout_height="wrap_content" /》  
 </code></pre>
  

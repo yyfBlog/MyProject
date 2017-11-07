@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:visibility="gone"
         android:orientation="vertical">
 
         <Button
@@ -48,4 +49,7 @@
             android:layout_gravity="center"
             android:text="底部弹出" />
     </LinearLayout>
+    <com.yf.easyui.widgets.RulerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>
